@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart_pots.dao.UserDao">
+
+
+    <select id="ifNameExist" resultType="com.smart_pots.model.UserDTO">
+        select * from user_basic WHERE user_name = #{userName}
+    </select>
+
+    <select id="ifPhoneNumberExist" resultType="com.smart_pots.model.UserDTO">
+        select * from user_basic WHERE user_phone_number = #{userPhoneNumber}
+    </select>
+
+    <select id="ifEmailExist" resultType="com.smart_pots.model.UserDTO">
+        select * from user_basic WHERE user_email = #{userEmail}
+    </select>
+
+    <select id="login" resultType="com.smart_pots.model.UserDTO">
+        select * from user_basic WHERE user_name = #{userName} and user_password = #{userPassword}
+    </select>
+
+    <select id="signUp">
+        insert into user_basic values (0,#{userName},#{userPassword},#{userSex},#{userAge},#{userPhoneNumber},#{userEmail})
+    </select>
+</mapper>
