@@ -26,7 +26,7 @@ class SmartPotsApplicationTests {
         UserDTO userDTO = new UserDTO(0,"zyx","123456zyx",1,19,"11111111111","738667591@qq.com");
         try{
             System.out.println("in");
-            String s = userService.signUp(userDTO);
+            JSONObject s = userService.signUp(userDTO);
             System.out.println(s);
         } catch(NullPointerException e) {
             System.out.println("null");

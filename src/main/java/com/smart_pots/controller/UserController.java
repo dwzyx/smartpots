@@ -5,10 +5,8 @@ import com.smart_pots.enumeration.StatusEnum;
 import com.smart_pots.model.*;
 import com.smart_pots.service.*;
 import com.google.gson.Gson;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,40 +18,38 @@ public class UserController {
     private JSONObject jsonObject = new JSONObject();
 
     private final
-    UserService userService;
+    UserService userService;//addsfsd
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
 
-//    @GetMapping(value = "/user/signUp", produces = "application/json;charset=UTF-8")
-//    public String signUp(@RequestBody UserDTO userDTO){
-//
-//
-//        String userInfo = userService.signUp(userDTO);
-//        if(userInfo!=null){
-//            return null;
-//        }
-//
-//        jsonObject.replace("result", userInfo);
-//
-//        System.out.println(jsonObject.toString());
-//
-//        return jsonObject.toString();
-//    }
+    @PostMapping("/user/signUp")
+    public String signUp(@RequestBody UserDTO userDTO){
 
-    @GetMapping(value = "/user/login", produces = "application/json;charset=UTF-8")
-    public String login(@RequestBody UserDTO userDTO){
+        JSONObject jsonObject = userService.signUp(userDTO);
+
+        System.out.println(jsonObject.toString());
+
+        return jsonObject.toString();
+    }
+
+    @PostMapping(value = "/user/login", produces = "application/json;charset=UTF-8")
+    public String login(@RequestBody UserLoginDTO userDTO){
 
 
-        int userInfo = userService.login(userDTO);
-
-        jsonObject.replace("result", userInfo);
+        JSONObject jsonObject = userService.login(userDTO);
 
         System.out.println(jsonObject.toString());
         return jsonObject.toString();
     }
 
 
+    @PostMapping("/user/getAll")
+    public String getAll(@RequestParam("id") int id){
+        System.out.println(id);
+        jsonObject.replace("result",id);
+        return jsonObject.toString();
+    }
 }

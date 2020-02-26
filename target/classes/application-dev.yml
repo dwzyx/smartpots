@@ -33,33 +33,18 @@ spring:
 
       stat-view-servlet:
         enabled: true
-        deny: 121.36.4.52
+        deny: 119.3.176.15
         reset-enable: false
         url-pattern: /druid/*
-        allow: 127.0.0.1, 121.36.4.52
+        allow: 119.3.176.15
         login-username: root
-        login-password: 1234
-
-  redis:
-    host: 121.36.4.52
-
-    database: 0
-    port: 6379
-    jedis:
-      pool:
-        max-active: 8
-        ## 连接池最大阻塞等待时间（使用负值表示没有限制）
-        max-wait: -1
-        ## 连接池中的最大空闲连接
-        max-idle: 8
-        ## 连接池中的最小空闲连接
-        min-idle: 0
+        login-password: 738667591@qq.com
 
 mybatis:
   #config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
   configuration:
-    map-underscore-to-camel-case: on
+    map-underscore-to-camel-case: true
 
 server:
-  port: 8090
+  port: 8080
