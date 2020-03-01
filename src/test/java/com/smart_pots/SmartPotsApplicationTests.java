@@ -13,9 +13,13 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 @SpringBootTest
 class SmartPotsApplicationTests {
+
+    
+
 
     @Autowired
 
@@ -36,8 +40,10 @@ class SmartPotsApplicationTests {
 
     }
 
+
     @Test
     void contextLoads() {
+
     }
 
 }

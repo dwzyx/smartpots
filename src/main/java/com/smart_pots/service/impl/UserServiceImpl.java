@@ -2,6 +2,7 @@ package com.smart_pots.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.smart_pots.dao.UserDao;
+import com.smart_pots.enumeration.StatusEnum;
 import com.smart_pots.service.*;
 import com.smart_pots.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,12 +56,10 @@ public class UserServiceImpl implements UserService {
     public JSONObject login(UserLoginDTO userDTO) {
         JSONObject jsonObject = new JSONObject();
         if(userDao.login(userDTO.getUser_name(),userDTO.getUser_password())!=null){
-            Integer integer = 0;
-            jsonObject.put("result",integer);
+            StatusEnum.getMessageJson(StatusEnum.SUCCESS,jsonObject);
             return jsonObject;
         }
-        Integer integer = 1;
-        jsonObject.put("result",integer);
+        StatusEnum.getMessageJson(StatusEnum.FAILED,jsonObject);
         return jsonObject;
     }
 
